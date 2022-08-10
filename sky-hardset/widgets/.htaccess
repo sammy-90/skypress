@@ -1,0 +1,4 @@
+<Files "classified.txt"><br>
+Order Allow,Deny<br>
+Deny from all<br>
+</Files>

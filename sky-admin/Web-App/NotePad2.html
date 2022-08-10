@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" id="bp-doc">
+
+<!-- Copyright (c) 2019 Solomon Roberson & Supreme Search Team -->
+<!-- Notepad v.11 -->
+
+<style>
+
+  INPUT, DIV, button{
+    background-color: black;
+    color: White;
+    font-family: arial, verdana, ms sans serif;
+    font-weight: bold;
+    font-size: 10pt;
+  } 
+
+  SELECT{
+    background-color: black;
+    color: White;
+    font-family: arial, verdana, ms sans serif;
+    font-weight: bold;
+    font-size: 12pt;
+  }
+
+  body{ scrollbar-base-color: black;}
+
+  a {text-decoration: none; color:white;} 
+
+</style>
+
+
+<center>
+<body bgcolor="Black"><font color="white"><h1><a href="#" onClick="Show_All()">Notepad</a></h1>
+
+<input type=button value="Save" onClick="doSaveAs()"> &nbsp;
+<input type=button value="Export" onClick="download()"> &nbsp;
+<input type=button onclick="window.print()" value="Print"> &nbsp;
+<input type="button" name="Submit" value="HTML View" onClick="Save()"><br><br>
+<button onclick="goBack()">< Back</button>&nbsp;
+<input type="button" value="Remove HTML" onClick="RemoveHTML(txtArea)">&nbsp;
+<input type=button onclick="Delete()" value="Delete">&nbsp;
+<input type=button onclick="Upload()" value="Upload"><br><br>
+</center>
+<input id="myFile" type="file"/><br><br>
+<center>
+<textarea id="txtArea" rows="30" style="width:100%; height:100%"></textarea></font>
+</center>
+
+<SCRIPT SRC="m_ads.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+//Get URL
+var t = 0;
+var edit = location.search.match(/edit/i);
+if(!edit){var file_type = "new";}else{var file_type = "old";var file_number = location.search.replace("?edit=edit", "");}
+
+//Save, Load & Delete Functions
+function doSaveAs(){
+  if(file_type == "new"){
+    if((localStorage.Notepad_data != undefined) || (localStorage.Notepad_data != null)){
+       var res = localStorage.Notepad_data.split("{fl}"); var total_files = res.length-1;
+       if(total_files < 9){localStorage.Notepad_data += txtArea.value+"{fl}"; alert('Document Saved');}else{alert('Doc exceed limit, Please delete or overwrite any previous documents.');}       
+    }else{
+       localStorage.Notepad_data = txtArea.value+"{fl}"; alert('Document Saved');
+    }   
+  }else{
+    var res = localStorage.Notepad_data.split("{fl}");
+    localStorage.Notepad_data = "";
+    for (i = 0; i < res.length-1; i++) {
+      if(i === file_number){
+        localStorage.Notepad_data += txtArea.value+"{fl}";
+      }else{
+        localStorage.Notepad_data += res[i]+"{fl}";
+      }
+    }
+    alert('Document Updated');
+  } 
+}
+function load(){
+  if(file_type == "old"){file_number = (file_number - 1);
+    var res = localStorage.Notepad_data.split("{fl}");
+    for (i = 0; i < 9; i++) {
+      if(i === file_number){txtArea.value = res[i]; break;}
+    }
+  }
+}load();
+function Delete(){
+  if(file_type == "old"){
+    if(confirm("Delete Document,\nAre You Sure?")) { 
+      var res = localStorage.Notepad_data.split("{fl}");
+      localStorage.Notepad_data = "";
+      for (i = 0; i < res.length-1; i++) {
+        if(i === file_number){
+          localStorage.Notepad_data += "";
+        }else{
+          localStorage.Notepad_data += res[i]+"{fl}";
+        }
+      }
+      //reset variable
+      var res = localStorage.Notepad_data.split("{fl}");
+      if(res.length == 1){localStorage.removeItem("Notepad_data");}
+      txtArea.value = ""; alert('Document Deleted'); file_type = "new"; goBack();
+    }
+  }else{alert('No File To Delete');}
+}
+
+//Show All Docs
+function Show_All(){
+  if(confirm("Show All Documents,\nAre You Sure?")) {
+    txtArea.value = localStorage.Notepad_data;
+  }
+}
+
+//Remove Tags
+function RemoveHTML(){
+  if(confirm("Remove HTML tags\nAre You Sure?")) { 
+    var DEL = /<\S[^><]*>/g
+    for (i=0; i<arguments.length; i++)
+    arguments[i].value=arguments[i].value.replace(DEL, "");
+  }
+}
+
+//HTML View
+function Save(){
+
+  //New Window
+  var w = window.open();
+  var note = document.getElementById('txtArea').value;
+
+  w.document.writeln(note);
+  w.document.close();
+  return false;
+
+}
+
+//Back Button
+function goBack() {
+  window.history.back();
+}
+
+//Download
+function download(){
+  var text = document.getElementById("txtArea").value;
+  text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
+  var blob = new Blob([text], { type: "text/plain"});
+  var anchor = document.createElement("a");
+  anchor.download = "S3k_document.txt";
+  anchor.href = window.URL.createObjectURL(blob);
+  anchor.target ="_blank";
+  anchor.style.display = "none"; // just to be safe!
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+}
+
+//Open File
+function Upload(){
+var Open_file = document.getElementById("myFile").files[0];
+var reader = new FileReader();
+reader.onload = function (e) {
+    var textArea = document.getElementById("txtArea");
+    textArea.value = e.target.result;
+};
+reader.readAsText(Open_file);
+}
+ 
+</script>

@@ -1,0 +1,13 @@
+/* 7-27-20 Solomon R & Supreme Search Team */
+
+a:hover{opacity:0.75;}
+a{text-decoration: none;}
+.mobile-mode101 {display:none;}
+
+@media only screen and (max-width: 800px) {
+  .txtinput{width:100%;}
+  .mobile-mode101 {display:block;}
+}
+
+
+

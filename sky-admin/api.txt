@@ -1,0 +1,191 @@
+Search API Sample
+<?php
+
+    $api_search = str_replace(' ', "%20", $keyword);
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+	CURLOPT_URL => "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/WebSearchAPI?q=".$api_search."&pageNumber=".$Page."&pageSize=10&autoCorrect=true",
+	CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_SSL_VERIFYPEER => false,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_ENCODING => "",
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 30,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => "GET",
+	CURLOPT_HTTPHEADER => array(
+		"x-rapidapi-host: contextualwebsearch-websearch-v1.p.rapidapi.com",
+		"x-rapidapi-key: "
+	),
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+
+    if ($err) {
+	echo "cURL Error #:" . $err;
+    }else{
+
+      //Prase And Create Meta Tags
+      $jarray = json_decode($response, true);
+
+      foreach($jarray['value'] as $value) {$match++;
+        echo "<div class='lists3' style='word-wrap: break-word;'><small style='display: inline-block; margin-bottom: 7px;'>".$value['url']."</small><br><a href='".$value['url']."' rel='nofollow'  target='blank'><big><font color='blue'>".$value['title']."</font></big></a><br>".$value['description']."</div>";     
+        echo "<br>\n";
+      }
+
+    }
+
+    fclose($handle);
+
+?>
+
+
+Image API Sample
+<?php
+
+    $api_search = str_replace(' ', "%20", $keyword);
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+	CURLOPT_URL => "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=".$api_search."&pageNumber=".$Page."&pageSize=10&autoCorrect=true",
+	CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_SSL_VERIFYPEER => false,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_ENCODING => "",
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 30,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => "GET",
+	CURLOPT_HTTPHEADER => array(
+		"x-rapidapi-host: contextualwebsearch-websearch-v1.p.rapidapi.com",
+		"x-rapidapi-key: "
+	),
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+
+    if ($err) {
+	echo "cURL Error #:" . $err;
+    }else{
+
+  //Prase And Create Meta Tags
+  $jarray = json_decode($response, true);
+
+  foreach($jarray['value'] as $value) {$match++;
+    echo "<div class='lists'><a href='".$value['url']."'><img src='".$value['thumbnail']."' border='0'/></a><br><big><font color='darkblue'>".$value['title']."</font></big></div>";     
+    echo "<br><br>\n";
+  }
+
+    }
+
+    fclose($handle);
+
+?>
+
+
+News API Sample
+<?php
+
+    $api_search = str_replace(' ', "%20", $keyword);
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI?q=".$api_search."&pageNumber=".$Page."&pageSize=10&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null",
+	CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_SSL_VERIFYPEER => false,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_ENCODING => "",
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 30,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => "GET",
+	CURLOPT_HTTPHEADER => array(
+		"x-rapidapi-host: contextualwebsearch-websearch-v1.p.rapidapi.com",
+		"x-rapidapi-key: "
+	),
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+
+    if ($err) {
+	echo "cURL Error #:" . $err;
+    }else{
+
+      //Prase And Create Meta Tags
+      $jarray = json_decode($response, true);
+
+      foreach($jarray['value'] as $value) {$match++;
+        echo "<div class='lists3' style='word-wrap: break-word;'><small style='display: inline-block; margin-bottom: 7px;'>".$value['url']."</small><br><a href='".$value['url']."' rel='nofollow'  target='blank'><big><font color='blue'>".$value['title']."</font></big></a><br>".$value['description']."</div>";     
+        echo "<br>\n";
+      }
+
+    }
+
+    fclose($handle);
+
+?>
+
+
+Run 2 search APIs based on page#
+<?php
+  if($Page==1){
+    $api_search = str_replace(' ', "+", $keyword);
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://google-search3.p.rapidapi.com/api/v1/search/q=".$api_search."&num=30&lr=lang_en&hl=en&cr=US",
+	CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_SSL_VERIFYPEER => false,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_ENCODING => "",
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 30,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => "GET",
+	CURLOPT_HTTPHEADER => array(
+		"x-rapidapi-host: google-search3.p.rapidapi.com",
+		"x-rapidapi-key: "
+	),
+    ));
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+    $jarray = json_decode($response, true);
+    foreach($jarray['results'] as $value) {$match++;
+      echo "<div class='lists3' style='word-wrap: break-word;'><small style='display: inline-block; margin-bottom: 7px;'>".$value['link']."</small><br><a href='".$value['link']."' rel='nofollow'  target='blank'><big><font color='blue'>".$value['title']."</font></big></a><br>".$value['description']."</div><br>\n";     
+    }
+    fclose($handle);
+  }else{
+    $api_search = str_replace(' ', "%20", $keyword);
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+	CURLOPT_URL => "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/WebSearchAPI?q=".$api_search."&pageNumber=".$Page."&pageSize=10&autoCorrect=true",
+	CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_SSL_VERIFYPEER => false,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_ENCODING => "",
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 30,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => "GET",
+	CURLOPT_HTTPHEADER => array(
+		"x-rapidapi-host: contextualwebsearch-websearch-v1.p.rapidapi.com",
+		"x-rapidapi-key: "
+	),
+    ));
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+    $jarray = json_decode($response, true);
+    foreach($jarray['value'] as $value) {$match++;
+        echo "<div class='lists3' style='word-wrap: break-word;'><small style='display: inline-block; margin-bottom: 7px;'>".$value['url']."</small><br><a href='".$value['url']."' rel='nofollow'  target='blank'><big><font color='blue'>".$value['title']."</font></big></a><br>".$value['description']."</div><br>\n";     
+    }
+    fclose($handle);
+  }
+?>

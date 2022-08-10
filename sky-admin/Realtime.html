@@ -1,0 +1,18 @@
+<body onmouseup="IncreaseTime();" onmousedown="IncreaseTime();" onmousemove="IncreaseTime();" onclick="IncreaseTime();"/>
+<input type="hidden" style="background-color: white; color: black; BORDER: white; font-size: 12pt" size="3" id="redirect1" name="redirect1">
+<script language="JavaScript">
+var countdownfrom=60;
+var currentsecond=redirect1.value=countdownfrom+1;
+function AutoRefresh(){
+if (currentsecond!=1){
+currentsecond-=1;
+redirect1.value=currentsecond;
+}else{
+window.location.reload( true );
+return
+}
+setTimeout("AutoRefresh()",1200);
+}
+function IncreaseTime(){currentsecond=61;}
+AutoRefresh();
+</script>

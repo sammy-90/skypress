@@ -1,0 +1,6 @@
+Daily Horoscopes|<div class='w3-white'><script type='text/javascript' src='//100widgets.com/js_data.php?id=204'></script></div>
+Calendar|<iframe  src='sky-admin/jsCalendar/1.html' frameborder='0'  width='280' height='190' style='overflow:hidden;'></iframe>
+World Population|<iframe src='https://www.census.gov/popclock/population_widget_310x200.php?component=counter&no_scode#world' width='240' height='410' frameBorder='0' allowtransparency='true'></iframe>
+Bit Coin|<div class='nomics-ticker-widget' data-name='Skycoin' data-base='SKY' data-quote='USD'></div><script src='https://widget.nomics.com/embed.js'></script>
+Bible Verse of the Day|<div id='the-bible-life-verse-of-the-day'></div><script src='https://thebible.life/js/widgets/verseoftheday.js' async ></script><script>window.onload = function () {tb_verse_of_the_day('jesus-is-lord', 'callbackwidget1'); };</script>
+

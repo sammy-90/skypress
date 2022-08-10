@@ -1,0 +1,8 @@
+License
+You may use this software to create websites for yourself and your business. Skypress is copyrighted, you are not allow to resell or redistribute this software without written permission from the owner.
+
+No Warranties "AS IS"
+This software and program is being provided "as is", without any warranty of any type or nature, either express or implied, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose, and any warranty that this software or program is free from defects.
+
+Assumption Of Risk
+The risk of any and all loss, damage, or unsatisfactory performance of this software or program rests with you as the user. If you rely upon this software or program, you do so at your own risk, and you assume the responsibility for the results. Should this software or program prove defective, you assume the cost of all losses, including, but not limited to, any necessary servicing, repair or correction of any property involved.

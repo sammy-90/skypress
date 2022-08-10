@@ -1,0 +1,61 @@
+﻿<!-- The video -->
+<video autoplay muted loop id="myVideo">
+  <source src="fish.mp4" type="video/mp4">
+</video>
+
+<div class="bg"></div>
+<DIV id="Clock" style="position: absolute; bottom:0; right:0; FONT-SIZE: 50px; COLOR: white; FONT-FAMILY: Verdana;"></DIV>
+</center><body onload="Set_Clock()" onclick="Close_Screen_Saver()">
+
+<style>
+
+ /* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Style the button used to pause/play the video */
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+} 
+
+html,body {overflow-y: hidden;} 
+
+</style>
+
+<script language="JavaScript">
+
+function Set_Clock(){
+ thistime=new Date()
+ var hours=thistime.getHours()
+ var minutes=thistime.getMinutes()
+ var seconds=thistime.getSeconds()
+ hours = hours % 12; if (hours == 0){hours = 12;}
+ if (minutes < 10){minutes="0"+minutes;}
+ if (seconds < 10) {seconds="0"+seconds}
+ thistime = hours+":"+minutes+":"+seconds + "&nbsp;";
+ Clock.innerHTML=thistime;
+
+ //Updater
+ var timer=setTimeout("Set_Clock()",200)
+}
+
+</SCRIPT>
+
+
+<SCRIPT LANGUAGE="JavaScript" SRC="Domain.js"></SCRIPT>

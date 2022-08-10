@@ -1,0 +1,2 @@
+//Record Stats 
+var urlPath="stats/stats.php?URI="+window.location.href+"&REFERER="+document.referrer; document.write('<div style="display:none"><iframe id="rstats" scrolling="no" height="350" width ="350" src="'+urlPath+'"><\/iframe></div>');

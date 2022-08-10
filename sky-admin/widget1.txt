@@ -1,0 +1,4 @@
+Sports TV Guide|<script type='text/javascript' src='https://widgets.futbolenlatv.com/js/js?w=250&h=360&color=005df8&culture=en-US'></script>
+Flight|<div data-skyscanner-widget='SearchWidget'></div><script src='https://widgets.skyscanner.net/widget-server/js/loader.js' async></script>
+COVID-19 Updates|<iframe sandbox='' border='none' style='height:400px; width:260px; border:0;' scrolling='no' src='https://oig.hhs.gov/newsroom/widgets/2020/covid-wp.html'></iframe>
+Quote Of The Day|<script type='text/javascript' src='//100widgets.com/js_data.php?id=168'></script>
